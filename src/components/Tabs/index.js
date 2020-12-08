@@ -3,65 +3,79 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
-  Container, TabsContainer, TabItem, TabText,
+  Container, TabsContainer, TabItem, TabText, TabItemButton,
 } from './styles';
 
-export default function Tabs() {
+export default function Tabs({ translateY }) {
   return (
-    <Container>
+    <Container style={{
+      transform: [{
+        translateY: translateY.interpolate({
+          inputRange: [0, 380],
+          outputRange: [0, 30],
+          extrapolate: 'clamp',
+        }),
+      }],
+      opacity: translateY.interpolate({
+        inputRange: [0, 380],
+        outputRange: [1, 0.3],
+        extrapolate: 'clamp',
+      }),
+    }}
+    >
       <TabsContainer>
-      <TabItem>
+        <TabItemButton onPress={() => {}}>
           <Icon name="api" size={28} color="#FFF" />
           <TabText>Pix</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="qr-code" size={28} color="#FFF" />
           <TabText>Pagar</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="person-add-alt" size={28} color="#FFF" />
           <TabText>Indicar amigos</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="arrow-circle-up" size={28} color="#FFF" />
           <TabText>Transferir</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="arrow-circle-down" size={28} color="#FFF" />
           <TabText>Depositar</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="arrow-downward" size={28} color="#FFF" />
           <TabText>Empréstimos</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="credit-card" size={28} color="#FFF" />
           <TabText>Cartão virtual</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="smartphone" size={28} color="#FFF" />
           <TabText>Recarga de celular</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="tune" size={28} color="#FFF" />
           <TabText>Ajustar limite</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="lock" size={28} color="#FFF" />
           <TabText>Bloquear cartão</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="speaker-notes" size={28} color="#FFF" />
           <TabText>Cobrar</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="favorite-border" size={28} color="#FFF" />
           <TabText>Doação</TabText>
-        </TabItem>
-        <TabItem>
+        </TabItemButton>
+        <TabItemButton>
           <Icon name="help-outline" size={28} color="#FFF" />
           <TabText>Me ajuda</TabText>
-        </TabItem>
+        </TabItemButton>
       </TabsContainer>
     </Container>
   );
